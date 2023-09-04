@@ -16,8 +16,11 @@
     <!-- @product page -->
     <!-- hide add to cart -->
     <template id="website_wholesaler_product" inherit_id="website_sale.product" priority="4">
+        <xpath expr="//div[@id='o_wsale_cta_wrapper']" position="before">
+            <t t-set="is_public_user" t-value="website.is_public_user()"/>
+        </xpath>
         <xpath expr="//div[@id='o_wsale_cta_wrapper']" position="attributes">
-            <attribute name="t-if">website.is_public_user() != True</attribute>
+            <attribute name="t-attf-class" add="{{bool(website.is_public_user()) and 'invisible' or 'visible' }}" separator=" "/>
         </xpath>
     </template>
     <!-- @product page -->
