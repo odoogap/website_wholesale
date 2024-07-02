@@ -3,14 +3,14 @@
     <!-- @cart menu -->
     <template id="website_wholesaler_header_cart_link" inherit_id="website_sale.header_cart_link" priority="4">
         <xpath expr="//li[2]" position="attributes">
-            <attribute name="t-if">website.is_public_user() != True</attribute>
+            <attribute name="t-if">website.is_wholesale_website_public_user()</attribute>
         </xpath>
     </template>
     <!-- @product list -->
     <!-- hide price -->
     <template id="website_wholesaler_price" inherit_id="website_sale.products_item" priority="4">
         <xpath expr="//div[hasclass('o_wsale_product_sub')]" position="attributes">
-            <attribute name="t-if">website.is_public_user() != True</attribute>
+            <attribute name="t-if">website.is_wholesale_website_public_user()</attribute>
         </xpath>
     </template>
     <!-- @product page -->
@@ -20,14 +20,14 @@
             <t t-set="is_public_user" t-value="website.is_public_user()"/>
         </xpath>
         <xpath expr="//div[@id='o_wsale_cta_wrapper']" position="attributes">
-            <attribute name="t-attf-class" add="{{bool(website.is_public_user()) and 'invisible' or 'visible' }}" separator=" "/>
+            <attribute name="t-attf-class" add="{{(bool(website.is_public_user()) and website.is_wholesale) and 'invisible' or 'visible' }}" separator=" "/>
         </xpath>
     </template>
     <!-- @product page -->
     <!-- hide price -->
     <template id="website_wholesaler_products_item" inherit_id="website_sale.product_price" priority="4">
         <xpath expr="//div[@itemprop='offers']" position="attributes">
-            <attribute name="t-if">website.is_public_user() != True</attribute>
+            <attribute name="t-if">website.is_wholesale_website_public_user()</attribute>
         </xpath>
     </template>
 </odoo>

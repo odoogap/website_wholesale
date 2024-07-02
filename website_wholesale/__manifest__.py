@@ -21,7 +21,8 @@ This module sets a base for wholesale trade companies
     'external_dependencies': [
     ],
     'data': [
-        'views/website_sale_template.xml'
+        'views/website_sale_template.xml',
+        'views/website_view.xml'
     ],
     'demo': [
     ],
